@@ -43,6 +43,12 @@ class Kernel extends HttpKernel
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
+
+       /*  'authToken' => [
+            \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
+            'throttle:120,1',
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        ], */ 
     ];
 
     /**
@@ -63,5 +69,8 @@ class Kernel extends HttpKernel
         'signed' => \App\Http\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'authToken' => \App\Http\Middleware\AuthToken::class, 
+        'deleteCustomer' => \App\Http\Middleware\deleteCustomer::class, 
+        'createCustomer' => \App\Http\Middleware\createCustomer::class, 
     ];
 }
